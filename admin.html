@@ -1,0 +1,364 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex,nofollow">
+<title>Sottozero — Flavour Admin</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root{--p:#0A4FD1;--ps:#EAF1FC;--pd:#0034A8;--or:#FF5C1F;--ink:#0B0E13;--ink2:#232730;--mut:#5B616B;--mut2:#9CA0A8;--line:#EAEAEF;--line2:#F3F3F6;--bg:#F7F7F9;--good:#0F9E66;--goods:rgba(15,158,102,.1);--bad:#C9302E;--bads:rgba(201,48,46,.1);--r:14px;--rs:10px}
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:Inter,system-ui,sans-serif;background:var(--bg);color:var(--ink);font-size:15px;line-height:1.5}
+.topbar{position:sticky;top:0;z-index:50;background:#fff;border-bottom:1px solid var(--line);padding:0 16px}
+.topbar-in{max-width:880px;margin:0 auto;height:56px;display:flex;align-items:center;gap:10px}
+.topbar-in .brand{font-weight:800;font-size:14px;color:var(--p);letter-spacing:1px}
+.topbar-in .word{font-weight:800;font-size:11px;color:var(--or);letter-spacing:1px;text-transform:uppercase}
+.topbar-in .live{margin-left:auto;font-size:13px;font-weight:600;color:var(--p);text-decoration:none}
+.wrap{max-width:880px;margin:0 auto;padding:24px 16px 64px}
+h1{font-size:24px;font-weight:800;letter-spacing:-.5px}
+.sub{font-size:14px;color:var(--mut);margin-top:4px}
+.card{background:#fff;border:1px solid var(--line);border-radius:var(--r);padding:20px;margin-top:16px;box-shadow:0 1px 2px rgba(15,18,28,.04)}
+.card h2{font-size:13px;font-weight:700;text-transform:uppercase;letter-spacing:1px;color:var(--mut);margin-bottom:12px}
+.step-num{display:inline-flex;width:22px;height:22px;border-radius:50%;background:var(--ps);color:var(--p);font-size:12px;font-weight:700;align-items:center;justify-content:center;margin-right:8px}
+.drop{border:2px dashed var(--line);border-radius:var(--rs);padding:24px;text-align:center;color:var(--mut);cursor:pointer;transition:.15s}
+.drop:hover,.drop.over{border-color:var(--p);background:var(--ps);color:var(--p)}
+.drop input{display:none}
+.status{margin-top:12px;font-size:13px;border-radius:var(--rs);padding:10px 12px;display:none;line-height:1.5}
+.status.ok{display:block;background:var(--goods);color:var(--good)}
+.status.err{display:block;background:var(--bads);color:var(--bad)}
+.status.info{display:block;background:var(--ps);color:var(--pd)}
+.toolrow{display:flex;gap:8px;flex-wrap:wrap;align-items:center;margin-bottom:12px}
+.toolrow input[type=search]{flex:1;min-width:160px;padding:9px 12px;font-size:14px;border:1px solid var(--line);border-radius:var(--rs)}
+.btn{border:1px solid var(--line);background:#fff;color:var(--ink2);font-weight:600;font-size:13px;padding:9px 14px;border-radius:var(--rs);cursor:pointer}
+.btn:hover{background:var(--line2)}
+.btn.primary{background:var(--p);border-color:var(--p);color:#fff}
+.btn.primary:hover{background:var(--pd)}
+.btn:disabled{opacity:.5;cursor:default}
+.cat-block{margin-top:16px}
+.cat-head{display:flex;align-items:center;gap:8px;padding:8px 0;border-bottom:2px solid var(--line)}
+.cat-head .cname{font-weight:700;font-size:15px}
+.cat-head .rename{border:none;background:none;color:var(--p);cursor:pointer;font-size:13px;padding:2px 6px}
+.cat-head .ccount{font-size:12px;color:var(--mut)}
+.cat-head .mini{margin-left:auto;display:flex;gap:2px}
+.mini button{border:none;background:none;font-size:12px;font-weight:600;color:var(--p);cursor:pointer;padding:4px 6px}
+.frow{border-bottom:1px solid var(--line2)}
+.frow-top{display:flex;align-items:center;gap:10px;padding:10px 4px;cursor:pointer}
+.frow-top:hover{background:var(--line2)}
+.frow .dot{width:16px;height:16px;border-radius:50%;flex:none;border:1px solid rgba(11,14,19,.08)}
+.frow .fname{flex:1;font-size:14px;font-weight:500}
+.frow .alg{font-size:11px;color:var(--mut2);display:block}
+.frow .dtags{font-size:10px;color:var(--good);font-weight:700;text-transform:uppercase;letter-spacing:.3px}
+.frow input.vis{width:18px;height:18px;accent-color:var(--p);cursor:pointer}
+.frow.off .fname{color:var(--mut2);text-decoration:line-through}
+.frow .caret{color:var(--mut2);font-size:12px;transition:.15s}
+.frow.open .caret{transform:rotate(90deg)}
+.editor{display:none;background:var(--bg);border-radius:var(--rs);padding:14px;margin:0 4px 12px}
+.frow.open .editor{display:block}
+.editor h5{font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.8px;color:var(--mut);margin:12px 0 6px}
+.editor h5:first-child{margin-top:0}
+.agrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(170px,1fr));gap:4px}
+.acheck{display:flex;align-items:center;gap:8px;font-size:13px;padding:6px 8px;border-radius:8px;background:#fff;border:1px solid var(--line);cursor:pointer}
+.acheck input{accent-color:var(--bad);width:16px;height:16px}
+.acheck.diet input{accent-color:var(--good)}
+.acheck.on{border-color:var(--bad);background:var(--bads)}
+.acheck.diet.on{border-color:var(--good);background:var(--goods)}
+.editor select,.editor input[type=text]{padding:8px 10px;font-size:14px;border:1px solid var(--line);border-radius:8px;background:#fff;max-width:100%}
+.summary{font-size:13px;color:var(--mut);margin-top:10px}
+.pubrow{display:flex;gap:8px;margin-top:14px;flex-wrap:wrap;align-items:center}
+.pubrow input{flex:1;min-width:180px;padding:10px 12px;font-size:14px;border:1px solid var(--line);border-radius:var(--rs)}
+.help{font-size:12.5px;color:var(--mut);margin-top:10px;line-height:1.6}
+</style>
+</head>
+<body>
+<div class="topbar"><div class="topbar-in">
+  <span class="brand">SOTTOZERO</span><span class="word">Flavour admin</span>
+  <a class="live" href="/" target="_blank">View live site ↗</a>
+</div></div>
+
+<div class="wrap">
+  <h1>Manage your flavour page</h1>
+  <p class="sub">Upload the latest ingredients book, edit flavours, allergens and categories, then publish. Changes go live instantly — no redeploy needed. Keep this page's address private.</p>
+  <div class="status" id="loadStatus"></div>
+
+  <div class="card">
+    <h2><span class="step-num">1</span>Upload new ingredients book (optional)</h2>
+    <label class="drop" id="drop">
+      <div><b>Drop the PDF here</b> or tap to choose the file</div>
+      <div style="font-size:12px;margin-top:4px">The "Cartello Unico degli Ingredienti" export from your system</div>
+      <input type="file" id="pdfInput" accept="application/pdf">
+    </label>
+    <div class="status" id="parseStatus"></div>
+  </div>
+
+  <div class="card">
+    <h2><span class="step-num">2</span>Edit flavours &amp; categories</h2>
+    <div class="help" style="margin:0 0 10px">Tap a flavour to edit its allergens (all 14), dietary labels and category. Use ✎ next to a category name to reword it. Untick the box on the right to hide a flavour from customers.</div>
+    <div class="toolrow">
+      <input type="search" id="adminSearch" placeholder="Filter flavours…">
+      <button class="btn" id="allOn">Show all</button>
+      <button class="btn" id="allOff">Hide all</button>
+      <button class="btn" id="addCat">+ New category</button>
+    </div>
+    <div id="flavourList"></div>
+    <div class="summary" id="summary"></div>
+  </div>
+
+  <div class="card">
+    <h2><span class="step-num">3</span>Publish</h2>
+    <div class="pubrow">
+      <input type="password" id="pubPass" placeholder="Admin password" autocomplete="off">
+      <button class="btn primary" id="publish">Publish changes</button>
+    </div>
+    <div class="help">Enter the admin password Claude gave you. It's checked securely on the server — no Netlify token needed. Changes appear on the customer page within seconds.</div>
+    <div class="status" id="pubStatus"></div>
+  </div>
+</div>
+
+<script src="data.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js"></script>
+<script>
+pdfjsLib.GlobalWorkerOptions.workerSrc = "https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.worker.min.js";
+const SUPA_URL="https://xtoddpoaerqwfhrgpnvn.supabase.co";
+const SUPA_KEY="eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Inh0b2RkcG9hZXJxd2ZocmdwbnZuIiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODM0MTkwNzMsImV4cCI6MjA5ODk5NTA3M30.bXgCEtMPrpPM2F1V9AeEJ68xdcA82qZDvlPc2mXiGVc";
+const EU14=[
+ {k:"Gluten",label:"Cereals w/ gluten"},{k:"Crustaceans",label:"Crustaceans"},
+ {k:"Eggs",label:"Eggs"},{k:"Fish",label:"Fish"},{k:"Peanuts",label:"Peanuts"},
+ {k:"Soya",label:"Soybeans"},{k:"Milk",label:"Milk / lactose"},{k:"Nuts",label:"Tree nuts"},
+ {k:"Celery",label:"Celery"},{k:"Mustard",label:"Mustard"},{k:"Sesame",label:"Sesame"},
+ {k:"Sulphites",label:"Sulphites (SO2)"},{k:"Lupin",label:"Lupin"},{k:"Molluscs",label:"Molluscs"}];
+const DIETS=[{k:"lf",label:"Lactose free"},{k:"sf",label:"Sugar free"},{k:"gf",label:"Gluten free"}];
+
+const COLORS = {"Matcha White Chocolate": "#A8C686", "Cremino Bacio Bianco": "#F2ECDC", "Cremino Loacker": "#C8A165", "Cremino Mars": "#8B5E3C", "Cremino Pistacchio": "#93B874", "Cremino Raffaello": "#F5F1E8", "Cremino Tronky": "#A9743F", "Cremino Wholenut": "#9C6B3E", "Dubai White": "#CBD5A0", "Hershey's cookies 'n' creme": "#E8E4DB", "Nutella Biscuit": "#7B4A2D", "White Chocolate with Choco Berries": "#EAD7D9", "White Chocolate with Pomegranate": "#E3B9C0", "White Loacker": "#F0EAD8", "Chocolate Mango Magnum": "#E08E3C", "Green Apple": "#A6CE5E", "Lemon": "#F2DE8A", "Mango": "#F5A94E", "Melon": "#F9C784", "Peach": "#F7B980", "Peach, Rose And Lemon": "#F4A9A0", "Pineapple": "#F3D25C", "Pink Grapefruit": "#F0907C", "Prickly Pear": "#C25B78", "Raspberry": "#D9536F", "Strawberry": "#E8798F", "Black Chocolate": "#3B2A20", "Black Chocolate orange": "#703A1C", "Black Chocolate Strawberry": "#5C3040", "Soia Chocolate": "#6B4A33", "Soia Nocciola": "#B08556", "Soia Pistachio": "#9DBB7E", "After 8": "#4E8F6E", "Amarena": "#8E2F45", "Amarena Crocante": "#9A3A4C", "Apple Crumble": "#D9A662", "Bacio": "#6E4530", "Bacio Caramelised Almond": "#7D5233", "Banoffee": "#E0B96A", "Bisquit Bourbon": "#C89F68", "Cadbury Chocolate & orange": "#7A451F", "Cadbury Crunchy": "#8A5A2B", "Cannolo": "#F1E8D5", "Cassata Siciliana": "#EFE2C8", "Cheesecake Etna": "#EFE4C9", "Cheesecake Pecan": "#D9B285", "Cheesecake Strawberry": "#EFB7C0", "Schoko Bons": "#8C5A36", "Chocolate": "#5C3A21", "Chocolate with pecan": "#6D4426", "Pecan Pie": "#B37B42", "Chocolate with rum&raisins": "#6A4030", "Coconut": "#FAF6ED", "Cookies": "#C9A26B", "Cookies Pecan & Maple": "#B97E3F", "Dubai Chocolate": "#6B4B2A", "Ferrero Rocher": "#8A5A33", "Fior Di Latte": "#FAF7F0", "Frosties": "#E8C36A", "Gingerbread": "#B5722F", "Helwa Tat-Tork": "#D8B577", "Kinder Bueno": "#C8A165", "Kinder Bueno White": "#EFE6D2", "Kinder Cereali": "#A67C4A", "Kinder Pingui": "#4F3222", "Kit Kat": "#7C4A26", "Kit Kat Biscoff": "#B87038", "Kit Kat Orange": "#C15E28", "Lamingtons": "#8A5C42", "Lindt Chocolate Orange": "#6E3C1E", "Lindt Crispy": "#7A4E2C", "Loacker": "#D9BC8C", "Lotus": "#C97F45", "M&M's": "#E0533F", "Malaga": "#E3C08D", "Maltesers": "#9A6B3F", "Mama's Cake": "#8B4E3A", "Milka Oreo": "#B39DDB", "Milkybar Buttons": "#F6EFDE", "Mint": "#9AD6C0", "Mint Brownie": "#5E9E86", "Morning Coffee": "#8A6642", "New York Cheesecake": "#F0E4C4", "Nocciola": "#A9743F", "Oreo": "#3E3A38", "Pan di Stelle": "#4A3629", "Panettone": "#E8C070", "Pink Amore": "#E88CA0", "Pistacchio": "#93B874", "Puffo": "#7EB3E8", "Raffaello": "#F1E9DC", "Reese's": "#C77B3B", "Reese's Dipped Pretzels": "#B06E33", "Roasted Almond": "#C29A6B", "Rum Baba": "#C98F55", "Salted Caramel": "#D19A4F", "Snickers": "#8B5E34", "Stracciatella": "#EFEBE2", "Tiramisu": "#C7A278", "Toblerone": "#96632F", "Traditional Maltese": "#D2A868", "Twix": "#A06A38", "Vanilla": "#F1E4B8", "White chocolate and passion fruit Cheesecake": "#F2D398", "White reese's": "#E8D0A8", "Yoggoberrycrunch": "#D998AC", "Yoghurt with forest fruits": "#A56B8F", "Yoghurt with Passion Fruit": "#F4DCA0", "American Cookie Brownie": "#6F4A2F", "American Cookie Plain": "#D2A96F", "Variegato Cookie Dough": "#BE9660", "White Brownie": "#E9D9B5"};
+const DOT_MAP = [
+  [/matcha/i,"#A8C686"],[/white|bianco|milkybar|fior di latte|raffaello|coconut/i,"#F1E9DC"],
+  [/pistac/i,"#93B874"],[/chocolate|choco|cocoa|schoko|brownie/i,"#5C3A21"],
+  [/strawberr|fragola|pink/i,"#E88CA0"],[/lemon|limone/i,"#F2DE8A"],[/mango/i,"#F5A94E"],
+  [/vanilla|vaniglia/i,"#F1E4B8"],[/coffee|caff|tiramisu/i,"#8A6642"],[/mint/i,"#9AD6C0"],
+  [/banana|banoffee/i,"#E0B96A"],[/peach|pesca/i,"#F7B980"],[/melon/i,"#F9C784"],
+  [/apple|mela/i,"#A6CE5E"],[/raspberr/i,"#D9536F"],[/cherr|amarena/i,"#8E2F45"],
+  [/caramel|lotus|biscoff|toffee/i,"#C98D4B"],[/hazelnut|nocciola|bacio|rocher|nutella/i,"#A9743F"],
+  [/almond|mandorla/i,"#C29A6B"],[/yog/i,"#F2EEE3"],[/berr|forest/i,"#A56B8F"],
+  [/blue|puffo/i,"#7EB3E8"],[/oreo|cookie|stracciatella/i,"#C9A26B"],[/orange|arancia/i,"#F09A3E"],
+  [/passion/i,"#F2D398"],[/pomegranate|melagrana/i,"#C04A5A"],[/kinder|bueno/i,"#C8A165"],
+  [/rum|baba|malaga/i,"#C98F55"],[/pecan|maple/i,"#B37B42"],[/sesame|helwa/i,"#D8B577"]
+];
+function colorFor(name){
+  if(COLORS[name]) return COLORS[name];
+  for(const [re,c] of DOT_MAP){ if(re.test(name)) return c; }
+  return "#EAF1FC";
+}
+
+const CAT_NAMES = {"(null)Category":"Specialties","Cremino":"Cremino & White Chocolate","FRUIT":"Fruit Sorbets","LACTOSE-FREE":"Lactose-Free","LACTOSE-SUGAR FREE":"Lactose & Sugar Free","MILK-BASED":"Milk-Based","TRAY BAGS":"Bakery & Toppings"};
+const ALLERGEN_PATTERNS = {
+  Milk:[/\bmilk\b/i,/\blactose\b/i,/\bbuttermilk\b/i,/\bwhey\b/i,/\bdairy\b/i,/\byoghurt\b/i,/\bmascarpone\b/i,/\bricotta\b/i,/\bBUTTER\b/,/\bCREAM\b/],
+  Gluten:[/\bwheat\b/i,/\bbarley\b/i,/\brye\b/i,/\bspelt\b/i,/\boat\b/i,/\bgluten\b/i,/\bkadayif\b/i,/\bwafer\b/i,/\bbiscuit/i,/\bbisquit/i,/\bcookie/i,/\bbrownie/i,/\bcrumble\b/i,/\bpretzel/i],
+  Eggs:[/\beggs?\b/i],
+  Soya:[/\bsoya?\b/i],
+  Nuts:[/\bhazelnut/i,/\balmond/i,/\bpistacc?hio/i,/\bpistakio/i,/\bpecan/i,/\bwalnut/i,/\bcashew/i,/\bmandorl/i,/\bnocciol/i,/\bnoci\b/i,/\bpinoli\b/i],
+  Peanuts:[/\bpeanut/i],
+  Sesame:[/\bsesame\b/i],
+  Sulphites:[/sulphur dioxide/i,/\bsulphite/i]
+};
+function detectAllergens(ing){
+  const out=[];
+  for(const [a,pats] of Object.entries(ALLERGEN_PATTERNS)){
+    if(pats.some(p=>p.test(ing))) out.push(a);
+  }
+  return out;
+}
+function cleanName(n){
+  n=n.replace(/\s+/g,' ').trim();
+  n=n.replace(/\s+[xX]\d+\b/,'');
+  const last=n.split(' ').pop();
+  const digits=(last.match(/\d/g)||[]).length;
+  if(digits>=3) n=n.replace(/\s+(MM2\s+)?[\d.,]+$/,'');
+  if(n===n.toUpperCase() && /[A-Z]/.test(n)){
+    n=n.toLowerCase().replace(/(^|[\s&('-])([a-z])/g,(m,a,b)=>a+b.toUpperCase()).replace(/'S\b/g,"'s");
+  }
+  return n.trim();
+}
+const FOOTER_RE=/INFORMAZIONI|sopraccitati|Alcuni prodotti|prassi|Per ulteriori|CARTELLO|LA VALLETTA|D\.Lgs|decongelati|ex art/i;
+
+
+
+function defaultDiet(f){
+  return {lf:/lactose/i.test(f.c), sf:/sugar free/i.test(f.c), gf:!f.a.includes("Gluten")};
+}
+let FLAVOURS=(window.FLAVOURS||[]).map(f=>({hidden:false,...f, d:f.d||null}));
+FLAVOURS.forEach(f=>{if(!f.d)f.d=defaultDiet(f);});
+
+async function loadLive(){
+  const s=document.getElementById('loadStatus');
+  try{
+    const r=await fetch(SUPA_URL+"/rest/v1/allergen_site?id=eq.1&select=data",{headers:{apikey:SUPA_KEY,Authorization:"Bearer "+SUPA_KEY}});
+    if(r.ok){const j=await r.json();const d=j[0]&&j[0].data;
+      if(d&&Array.isArray(d.flavours)&&d.flavours.length){
+        FLAVOURS=d.flavours.map(f=>({hidden:false,...f}));
+        FLAVOURS.forEach(f=>{if(!f.d)f.d=defaultDiet(f);});
+        s.className='status ok';s.textContent='✓ Loaded the live published data ('+FLAVOURS.length+' flavours).';
+      } else {
+        s.className='status info';s.textContent='No published data yet — showing the built-in list. Your first publish will save it to the database.';
+      }
+    }
+  }catch(e){
+    s.className='status err';s.textContent='Could not reach the database — editing the built-in list instead.';
+  }
+  renderList();
+}
+
+/* ---------- PDF upload ---------- */
+const drop=document.getElementById('drop'), pdfInput=document.getElementById('pdfInput'), parseStatus=document.getElementById('parseStatus');
+drop.addEventListener('dragover',e=>{e.preventDefault();drop.classList.add('over');});
+drop.addEventListener('dragleave',()=>drop.classList.remove('over'));
+drop.addEventListener('drop',e=>{e.preventDefault();drop.classList.remove('over');if(e.dataTransfer.files[0])handleFile(e.dataTransfer.files[0]);});
+pdfInput.addEventListener('change',()=>{if(pdfInput.files[0])handleFile(pdfInput.files[0]);});
+async function handleFile(f){
+  parseStatus.className='status info';parseStatus.textContent='Reading '+f.name+'…';
+  try{
+    const buf=await f.arrayBuffer();
+    const parsed=await parsePdf(buf);
+    if(parsed.length<5) throw new Error('Only found '+parsed.length+' flavours — this doesn\'t look like the ingredients book.');
+    const old={};FLAVOURS.forEach(x=>old[x.n]=x);
+    parsed.forEach(x=>{
+      const o=old[x.n];
+      x.d=defaultDiet(x);
+      if(o){
+        x.hidden=o.hidden; x.d=o.d||x.d; x.col=o.col||x.col;
+        if(o.i.replace(/\s+/g,'')===x.i.replace(/\s+/g,'')){ x.a=o.a; x.c=o.c; }
+      }
+    });
+    const oldNames=new Set(FLAVOURS.map(x=>x.n)), newNames=new Set(parsed.map(x=>x.n));
+    const added=[...newNames].filter(n=>!oldNames.has(n));
+    const removed=[...oldNames].filter(n=>!newNames.has(n));
+    FLAVOURS=parsed;
+    renderList();
+    parseStatus.className='status ok';
+    parseStatus.innerHTML='✓ Parsed <b>'+parsed.length+'</b> flavours from '+f.name+
+      '. Your hide/show choices, dietary labels, and edits to unchanged flavours were kept.'+
+      (added.length?'<br>New: '+added.join(', '):'')+
+      (removed.length?'<br>No longer in the book: '+removed.join(', '):'');
+  }catch(err){
+    parseStatus.className='status err';
+    parseStatus.textContent='Could not parse this PDF: '+err.message;
+  }
+}
+
+/* ---------- List + editor ---------- */
+let filter='', openName=null;
+document.getElementById('adminSearch').addEventListener('input',e=>{filter=e.target.value.toLowerCase();renderList();});
+document.getElementById('allOn').onclick=()=>{FLAVOURS.forEach(f=>f.hidden=false);renderList();};
+document.getElementById('allOff').onclick=()=>{FLAVOURS.forEach(f=>f.hidden=true);renderList();};
+document.getElementById('addCat').onclick=()=>{
+  const name=prompt('Name of the new category:');
+  if(name&&name.trim()){extraCats.push(name.trim());renderList();}
+};
+let extraCats=[];
+function cats(){return [...new Set([...FLAVOURS.map(f=>f.c),...extraCats])];}
+function esc(s){return String(s).replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/"/g,"&quot;");}
+
+function editor(f){
+  const box=document.createElement('div');box.className='editor';
+  box.innerHTML='<h5>Category</h5>';
+  const sel=document.createElement('select');
+  cats().forEach(c=>{const o=document.createElement('option');o.value=c;o.textContent=c;if(c===f.c)o.selected=true;sel.appendChild(o);});
+  sel.onchange=()=>{f.c=sel.value;renderList();};
+  box.appendChild(sel);
+
+  const ha=document.createElement('h5');ha.textContent='Allergens — tick everything this flavour contains';box.appendChild(ha);
+  const grid=document.createElement('div');grid.className='agrid';
+  EU14.forEach(e=>{
+    const on=f.a.includes(e.k);
+    const lab=document.createElement('label');lab.className='acheck'+(on?' on':'');
+    lab.innerHTML='<input type="checkbox" '+(on?'checked':'')+'> '+e.label;
+    lab.querySelector('input').onchange=ev=>{
+      if(ev.target.checked){if(!f.a.includes(e.k))f.a.push(e.k);}
+      else{f.a=f.a.filter(x=>x!==e.k);}
+      if(e.k==='Gluten')f.d.gf=!f.a.includes('Gluten');
+      renderList(true);
+    };
+    grid.appendChild(lab);
+  });
+  box.appendChild(grid);
+
+  const hd=document.createElement('h5');hd.textContent='Dietary labels — shown as green badges to customers';box.appendChild(hd);
+  const dgrid=document.createElement('div');dgrid.className='agrid';
+  DIETS.forEach(e=>{
+    const on=!!f.d[e.k];
+    const lab=document.createElement('label');lab.className='acheck diet'+(on?' on':'');
+    lab.innerHTML='<input type="checkbox" '+(on?'checked':'')+'> '+e.label;
+    lab.querySelector('input').onchange=ev=>{f.d[e.k]=ev.target.checked;renderList(true);};
+    dgrid.appendChild(lab);
+  });
+  box.appendChild(dgrid);
+  return box;
+}
+
+function renderList(keepOpen){
+  const box=document.getElementById('flavourList');box.innerHTML='';
+  cats().forEach(cat=>{
+    const inCat=FLAVOURS.filter(f=>f.c===cat);
+    const rows=inCat.filter(f=>f.n.toLowerCase().includes(filter));
+    if(!rows.length && !(extraCats.includes(cat)&&!filter))return;
+    const block=document.createElement('div');block.className='cat-block';
+    const shown=inCat.filter(f=>!f.hidden).length;
+    const head=document.createElement('div');head.className='cat-head';
+    head.innerHTML='<span class="cname">'+esc(cat)+'</span><button class="rename" title="Rename category">✎</button>'+
+      '<span class="ccount">'+shown+'/'+inCat.length+' shown</span>'+
+      '<span class="mini"><button data-v="0">show all</button><button data-v="1">hide all</button></span>';
+    head.querySelector('.rename').onclick=()=>{
+      const nn=prompt('Rename category "'+cat+'" to:',cat);
+      if(nn&&nn.trim()&&nn!==cat){
+        FLAVOURS.forEach(f=>{if(f.c===cat)f.c=nn.trim();});
+        extraCats=extraCats.map(c=>c===cat?nn.trim():c);
+        renderList();
+      }
+    };
+    head.querySelectorAll('.mini button').forEach(b=>{
+      b.onclick=()=>{FLAVOURS.forEach(f=>{if(f.c===cat)f.hidden=b.dataset.v==='1';});renderList();};
+    });
+    block.appendChild(head);
+    rows.forEach(f=>{
+      const r=document.createElement('div');r.className='frow'+(f.hidden?' off':'')+(openName===f.n?' open':'');
+      const top=document.createElement('div');top.className='frow-top';
+      const dtags=[f.d.lf?'LF':null,f.d.sf?'SF':null,f.d.gf?'GF':null].filter(Boolean).join(' · ');
+      top.innerHTML='<span class="caret">▶</span><span class="dot" style="background:'+esc(f.col)+'"></span>'+
+        '<span class="fname">'+esc(f.n)+' <span class="dtags">'+dtags+'</span><span class="alg">'+(f.a.length?f.a.join(' · '):'no allergens')+'</span></span>';
+      const cb=document.createElement('input');cb.type='checkbox';cb.className='vis';cb.checked=!f.hidden;
+      cb.onclick=e=>e.stopPropagation();
+      cb.onchange=e=>{f.hidden=!e.target.checked;renderList(true);};
+      top.appendChild(cb);
+      top.onclick=()=>{openName=(openName===f.n?null:f.n);renderList(true);};
+      r.appendChild(top);
+      if(openName===f.n)r.appendChild(editor(f));
+      block.appendChild(r);
+    });
+    box.appendChild(block);
+  });
+  const vis=FLAVOURS.filter(f=>!f.hidden).length;
+  document.getElementById('summary').textContent=vis+' of '+FLAVOURS.length+' flavours will be visible to customers.';
+}
+
+/* ---------- Publish ---------- */
+function pubMsg(cls,msg){const s=document.getElementById('pubStatus');s.className='status '+cls;s.innerHTML=msg;}
+document.getElementById('publish').onclick=async()=>{
+  const password=document.getElementById('pubPass').value.trim();
+  if(!password){pubMsg('err','Enter the admin password first.');return;}
+  const btn=document.getElementById('publish');btn.disabled=true;
+  try{
+    pubMsg('info','Publishing…');
+    const updated=new Date().toLocaleDateString('en-GB',{day:'numeric',month:'long',year:'numeric'});
+    const res=await fetch(SUPA_URL+'/functions/v1/allergen-publish',{
+      method:'POST',headers:{'Content-Type':'application/json'},
+      body:JSON.stringify({password,flavours:FLAVOURS,updated})});
+    const j=await res.json().catch(()=>({}));
+    if(!res.ok)throw new Error(j.error||('Server replied '+res.status));
+    pubMsg('ok','✓ Published — the customer page is updated. <a href="/" target="_blank">View it</a>.');
+  }catch(err){pubMsg('err','Publish failed: '+err.message);}
+  btn.disabled=false;
+};
+
+loadLive();
+</script>
+</body>
+</html>
