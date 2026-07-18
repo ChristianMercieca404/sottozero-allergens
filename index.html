@@ -106,7 +106,15 @@ button{font-family:inherit;cursor:pointer}
 .disclaimer p b{color:var(--sz-ink-2);font-family:var(--sz-font-subhead);font-weight:700}
 .callout{background:var(--sz-warn-soft);border:1px solid rgba(178,115,16,0.25);border-radius:var(--sz-radius);padding:16px;margin-top:36px;font-size:13px;line-height:1.6;color:var(--sz-warn)}
 .callout b{font-family:var(--sz-font-subhead)}
-footer{text-align:center;padding:24px 16px 40px;font-size:12px;color:var(--sz-muted);line-height:1.7}
+footer{text-align:center;padding:32px 16px 44px;font-size:12px;color:var(--sz-muted);line-height:1.7;border-top:1px solid var(--sz-line);margin-top:36px}
+footer .f-brand{font:800 11px var(--sz-font-subhead);letter-spacing:2px;text-transform:uppercase;color:var(--sz-primary);margin-bottom:12px}
+footer .f-links{display:flex;justify-content:center;align-items:center;gap:18px;flex-wrap:wrap;margin-bottom:14px}
+footer .f-links a{color:var(--sz-ink-2);text-decoration:none;font-weight:600;display:inline-flex;align-items:center;gap:6px;padding:6px 4px}
+footer .f-links a:hover{color:var(--sz-primary)}
+footer .f-links a:active{transform:scale(0.97)}
+footer .f-links svg{width:15px;height:15px;flex:none}
+footer .f-legal{font-size:11.5px}
+@media(max-width:640px){footer .f-links{gap:14px}footer .f-links a{min-height:44px}}
 
 /* Inline detail panel */
 .detail{grid-column:1/-1;background:var(--sz-white);border:1px solid var(--sz-primary);border-radius:var(--sz-radius);box-shadow:var(--sz-shadow);overflow:hidden}
@@ -216,23 +224,38 @@ footer{text-align:center;padding:24px 16px 40px;font-size:12px;color:var(--sz-mu
     <p>Try a different spelling, or clear your search and browse by category.</p>
   </div>
 
-  <div class="callout"><b>Made in one kitchen.</b> All our gelato is produced and served in an environment that handles gluten, milk, eggs, soya, peanuts, tree nuts, sesame, fish and crustaceans — traces can be present in any flavour. If you have a severe allergy, speak to our team before you order. <a href="#disclaimer" style="color:inherit;font-weight:600">Read the full disclaimer</a>.</div>
+  <div class="callout"><b>Made in a shared environment.</b> Our flavours are not all made in the same kitchen, but they are produced, stored and served in the same environment — one that handles gluten, milk, eggs, soya, peanuts, tree nuts, sesame, fish and crustaceans. Traces can be present in any flavour. If you have a severe allergy, please speak to our team before you order. <a href="#disclaimer" style="color:inherit;font-weight:600">Read the full disclaimer</a>.</div>
 
   <section id="disclaimer" class="disclaimer">
     <h3>Allergen &amp; ingredient disclaimer</h3>
-    <p>The information on this page is published by <b>Sottozero — The Gelato Factory</b> in good faith and for general guidance only. It is based on the ingredient declarations supplied by our manufacturer, La Valletta Manufacturing Ltd, and our ingredient suppliers, and was last updated on <b class="js-updated">16 July 2026</b>.</p>
-    <p><b>Cross-contamination.</b> All flavours are prepared, stored and served in a single kitchen and open display that handle cereals containing gluten, milk, eggs, soya, peanuts, tree nuts, sesame seeds, sulphites, fish and crustaceans. Although we follow strict hygiene and food-safety practices, we cannot guarantee that any flavour is completely free of any allergen. Serving scoops and utensils may come into contact with more than one flavour. "May contain" indicates a possible trace, not a declared ingredient.</p>
-    <p><b>Recipe changes.</b> Recipes, suppliers and factory ingredient declarations can change without notice. Where this page and the information held by our staff differ, please rely on our staff, who have access to the most recent documentation.</p>
-    <p><b>If you have a food allergy or intolerance,</b> tell our team before ordering — every time you visit, even if you have ordered the same flavour before. Our team can check the latest declarations with you and advise on the safest options. If we cannot establish with confidence that a flavour is suitable for you, we will always recommend that you do not consume it.</p>
-    <p>Nothing on this page is medical advice. Customers with severe or life-threatening allergies should exercise their own judgement, and are welcome to ask us any question — we would always rather check twice than serve once in doubt.</p>
+    <p>This page is published by <b>Sottozero — The Gelato Factory</b> in good faith, as general guidance only. It is based on the ingredient declarations given to us by our suppliers, and was last updated on <b class="js-updated">16 July 2026</b>.</p>
+    <p><b>Cross-contamination.</b> Our flavours are not all made in the same kitchen, but they are stored and served in the same environment — one that handles cereals containing gluten, milk, eggs, soya, peanuts, tree nuts, sesame seeds, sulphites, fish and crustaceans. Scoops and utensils also move between flavours. So while we follow strict hygiene and food-safety practices, we cannot guarantee that any flavour is completely free of any allergen. "May contain" means a possible trace, not a declared ingredient.</p>
+    <p><b>Recipes can change.</b> Ingredients and suppliers may change without notice. If this page and our staff say different things, please rely on our staff — they have the most recent information.</p>
+    <p><b>Always tell us before you order</b> if you have an allergy or intolerance — every visit, even for a flavour you have had before. If we cannot be confident a flavour is safe for you, we will tell you not to have it.</p>
+    <p>Nothing here is medical advice. Please ask us anything — we would much rather check twice than serve once in doubt.</p>
   </section>
 </div>
 
 <footer>
-  Ingredient information from La Valletta Manufacturing Ltd · Updated <span class="js-updated">16 July 2026</span><br>
-  Sottozero — The Gelato Factory
+  <div class="f-brand">Sottozero — The Gelato Factory</div>
+  <div class="f-links">
+    <a href="https://www.sottozerofactory.com" target="_blank" rel="noopener">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+      www.sottozerofactory.com
+    </a>
+    <a href="https://www.instagram.com/sottozerofactory" target="_blank" rel="noopener">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1.2" fill="currentColor" stroke="none"/></svg>
+      Follow us on Instagram
+    </a>
+  </div>
+  <div class="f-legal">
+    Allergen information updated <span class="js-updated">16 July 2026</span><br>
+    © <span id="fYear">2026</span> Sottozero The Gelato Factory. All Rights Reserved.
+  </div>
 </footer>
 
+
+<script>document.getElementById('fYear').textContent=new Date().getFullYear();</script>
 
 <script src="data.js"></script>
 <script>
