@@ -116,6 +116,23 @@ footer .f-links svg{width:15px;height:15px;flex:none}
 footer .f-legal{font-size:11.5px}
 @media(max-width:640px){footer .f-links{gap:14px}footer .f-links a{min-height:44px}}
 
+/* Category dividers inside the All view */
+.cat-sep{grid-column:1/-1;position:sticky;top:0;z-index:5;display:flex;align-items:center;gap:10px;background:var(--sz-bg,#F7F7F9);padding:16px 2px 8px;margin-top:8px}
+.cat-sep:first-child{margin-top:0;padding-top:6px}
+.cat-sep b{font:800 11px var(--sz-font-subhead);text-transform:uppercase;letter-spacing:1.6px;color:var(--sz-primary);font-weight:800}
+.cat-sep i{font-style:normal;font-size:11px;color:var(--sz-muted-2);font-weight:600;flex:none}
+.cat-sep::after{content:'';flex:1;height:1px;background:var(--sz-line);order:1}
+
+/* Denser tiles on phones so more flavours fit on screen */
+@media(max-width:640px){
+  .grid{grid-template-columns:repeat(auto-fill,minmax(103px,1fr));gap:8px;margin-top:8px}
+  .tile{padding:11px 10px;min-height:94px;border-radius:12px}
+  .tile .t-name{font-size:12.5px;letter-spacing:-0.1px}
+  .tile .t-all{font-size:9.5px;line-height:1.35}
+  .tile .dot{width:12px;height:12px}
+  .cat-sep{padding:13px 2px 6px;margin-top:4px}
+}
+
 /* Inline detail panel */
 .detail{grid-column:1/-1;background:var(--sz-white);border:1px solid var(--sz-primary);border-radius:var(--sz-radius);box-shadow:var(--sz-shadow);overflow:hidden}
 .detail-in{padding:16px}
@@ -407,7 +424,7 @@ function buildDetail(d){
     ${freeList.length?`<div class="freefrom"><b>Does not contain:</b> ${freeList.join(', ')}.</div>`:''}
     <h4>Full ingredients</h4>
     <p class="ing-text">${highlight(d.i,d.a)}</p>
-    <div class="sheet-note">Ingredient declaration from La Valletta Manufacturing Ltd. If you have a severe allergy, please speak to our team before ordering — see the <a href="#disclaimer" style="color:inherit;font-weight:600">full disclaimer</a>.</div>
+    <div class="sheet-note">Ingredient declaration from our supplier. Traces of other allergens can be present — please read the <a href="#disclaimer" style="color:inherit;font-weight:600">full disclaimer</a> and decide what is right for you.</div>
   </div>`;
   panel.querySelector('.close-btn').onclick=ev=>{ev.stopPropagation();closeDetail();};
   return panel;
@@ -479,7 +496,22 @@ function render(){
   if(sel.size){c.innerHTML=`<b>${ok.length}</b> of ${rows.length} flavours without your allergens`;}
   else{c.textContent=rows.length+" flavours";}
   document.getElementById('empty').style.display=rows.length?'none':'block';
-  ok.forEach(d=>gOk.appendChild(tile(d,false)));
+  // In the "All" view with no search, break the list into category sections
+  // so it reads as groups while scrolling instead of one long wall of tiles.
+  if(cat==="All" && !q){
+    const seen=[];
+    DATA.forEach(d=>{if(!seen.includes(d.c))seen.push(d.c);});
+    seen.forEach(c=>{
+      const items=ok.filter(d=>d.c===c);
+      if(!items.length)return;
+      const h=document.createElement('div');h.className='cat-sep';
+      h.innerHTML='<b>'+esc(c)+'</b><i>'+items.length+'</i>';
+      gOk.appendChild(h);
+      items.forEach(d=>gOk.appendChild(tile(d,false)));
+    });
+  } else {
+    ok.forEach(d=>gOk.appendChild(tile(d,false)));
+  }
   const showDiv = sel.size>0 && bad.length>0;
   document.getElementById('divider').style.display=showDiv?'flex':'none';
   if(sel.size){ bad.forEach(d=>gBad.appendChild(tile(d,true))); }
