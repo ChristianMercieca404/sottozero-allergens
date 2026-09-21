@@ -367,21 +367,23 @@ footer small{display:block;width:100%;color:var(--on-blue-muted);font-size:12px}
   <aside class="shared" aria-labelledby="sharedTitle">
     <div class="ico"><svg><use href="#i-scoop"/></svg></div>
     <div>
-      <h3 id="sharedTitle">Made in a shared environment</h3>
-      <p>Our flavours are not all made in the same kitchen, but they are stored and served in the same environment, so traces of the allergens used in our other flavours can be present. Every flavour has its own dedicated scoop. Each flavour above shows what it <b>contains</b> and what it <b>may contain</b>. We publish this so you can decide for yourself what is right for you. <a href="#disclaimer">Read the full disclaimer</a>.</p>
+      <h3 id="sharedTitle">Made in our gelato laboratory</h3>
+      <p>Our gelato is made in our own gelato laboratory, not in a kitchen. The laboratory uses shared equipment and our shops store and serve every flavour side by side, so traces of any allergen can be present in any product. Every flavour has its own dedicated scoop. Each flavour shows what it <b>contains</b> and what it <b>may contain</b>. If you have an allergy, tell a member of our team every time you order. <a href="#disclaimer">Read the full allergen notice</a>.</p>
       <div class="may-row" id="mayRow"></div>
     </div>
   </aside>
 
   <section id="disclaimer" class="legal" aria-labelledby="legalTitle">
-    <h2 id="legalTitle">Allergen &amp; ingredient disclaimer</h2>
+    <h2 id="legalTitle">Allergen &amp; ingredient notice</h2>
     <div>
-      <p>This page is published by <b>Sottozero — The Gelato Factory</b> in good faith, as general guidance only. It is based on the ingredient declarations given to us by our suppliers, and was last updated on <b class="js-updated">16 July 2026</b>.</p>
-      <p><b>Cross-contamination.</b> Our flavours are not all made in the same kitchen, but they are stored and served in the same environment, so traces of the allergens used in our other flavours can be present. In our shops <b>every flavour has its own dedicated scoop</b>, and we follow strict hygiene and food-safety practices. Even so, we cannot guarantee that any flavour is completely free of any allergen.</p>
-      <p><b>"Contains" and "may contain".</b> Each flavour on this page lists both. <b>Contains</b> means the allergen is a declared ingredient. <b>May contain</b> means it is not an ingredient, but a trace may be present through shared equipment or storage. We only list an allergen where there is a genuine reason to — we do not add blanket warnings.</p>
-      <p><b>Recipes can change.</b> Ingredients and suppliers may change without notice. This page shows the date it was last updated — please check that date before relying on what you read here.</p>
-      <p><b>The choice is yours.</b> We publish this information so that you can make your own decision. We are not able to assess your allergy or judge on your behalf whether a flavour is suitable for you. If you are in any doubt, please do not consume the product.</p>
-      <p>Nothing on this page is medical advice. If you have a severe or life-threatening allergy, please follow the guidance of your own doctor.</p>
+      <p><b>Where our gelato is made.</b> Our gelato is made in our own gelato laboratory, not in a kitchen. The laboratory produces many flavours using shared equipment, and our shops store and serve every flavour side by side. Every flavour has its own dedicated scoop, and we follow strict hygiene and food safety procedures. Even so, traces of any allergen used in our laboratory or our shops may be present in any product. We cannot guarantee that any product is free from any allergen.</p>
+      <p><b>“Contains” and “may contain”.</b> “Contains” means the allergen is an ingredient in that flavour. “May contain” means it is not an ingredient, but traces may be present through shared equipment, production or storage. Every product may contain traces of gluten, eggs, milk, nuts, fish and crustaceans.</p>
+      <p><b>Where this information comes from.</b> This page is based on our recipes and on the ingredient information our suppliers give us, and was last updated on <b class="js-updated">16 July 2026</b>. We rely on our suppliers for the accuracy of that information. Recipes, ingredients and suppliers can change, so please check the date above. This page is for guidance only and does not replace speaking to our staff.</p>
+      <p><b>Before you order.</b> If you have a food allergy or intolerance, tell a member of our team every time you order, even if you have ordered the same flavour before. If you have a severe allergy, we advise you not to eat our products, because we cannot rule out cross contact. If you are in any doubt, please do not consume the product.</p>
+      <p><b>Your decision.</b> We publish this information so that you can make your own informed choice. We are not able to assess your allergy or judge on your behalf whether a product is suitable for you. Nothing on this page is medical advice. Please follow the guidance of your own doctor.</p>
+      <p><b>Limitation of liability.</b> To the fullest extent permitted by law, Sottozero The Gelato Factory and La Valletta Manufacturing Ltd are not liable for any loss, damage, illness or reaction arising from reliance on this page, from any error or omission in it, or from consuming a product after reading this notice. Nothing in this notice excludes or limits any liability that cannot be excluded or limited under Maltese or European Union law.</p>
+      <p><b>Tell us.</b> If anything on this page looks wrong, please tell our team or write to <a href="mailto:info@sottozerofactory.com" style="color:inherit;font-weight:700">info@sottozerofactory.com</a>.</p>
+      <p>This notice is governed by the laws of Malta.</p>
     </div>
   </section>
 </main>
@@ -608,7 +610,7 @@ function openSheet(f){
     <div class="matrix">${rows}</div>
     ${free.length?`<div class="sh-sec"><h4>Does not contain</h4><p class="ing">${free.join(", ")}.</p></div>`:""}
     <div class="sh-sec"><h4>Full ingredients</h4><p class="ing">${highlight(f.i,f.a)}</p></div>
-    <p class="sh-note">Ingredient declaration from our supplier. Traces of other allergens can be present. Please read the <a href="#disclaimer" style="color:inherit;font-weight:700" data-close>full disclaimer</a> and decide what is right for you.</p>`;
+    <p class="sh-note">Based on our recipes and our suppliers’ ingredient information. Made in our gelato laboratory, where traces of other allergens can be present. Tell a member of our team about your allergy before you order, and read the <a href="#disclaimer" style="color:inherit;font-weight:700" data-close>full allergen notice</a>.</p>`;
   sheet.hidden = false; scrim.hidden = false; document.body.classList.add("locked");
   sheet.querySelector(".x").onclick = closeSheet;
   sheet.querySelector("[data-close]").onclick = closeSheet;
