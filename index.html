@@ -339,7 +339,7 @@ footer small{display:block;width:100%;color:var(--on-blue-muted);font-size:12px}
     <p class="eyebrow">Step one</p>
     <h2 id="avoidTitle">What do you <em>avoid?</em></h2>
     <p class="sub">Tap everything that applies. Flavours that declare any of them step aside, and the ones left standing are clear of what you picked.</p>
-    <p class="risk"><b>Dietary choices and intolerances:</b> this guide is made for you. <b>Severe allergies:</b> all our gelato is made in the same laboratory and served in the same shops, so we cannot promise any flavour is free of traces. If you choose to eat it, you do so at your own risk. Please speak to our team first. <a href="#disclaimer">Full allergen notice</a></p>
+    <p class="risk"><b>The choice is yours.</b> This guide is made for dietary choices and intolerances. All our gelato is made and served in a shared environment, so if you have a severe allergy, please speak to our team first; eating our products is at your own risk. <a href="#disclaimer">Allergen notice</a></p>
     <div class="picker" id="picker" role="group" aria-label="Allergens you avoid"></div>
     <div class="picker-foot">
       <p>All 14 EU allergens are listed inside each flavour.</p>
@@ -370,23 +370,19 @@ footer small{display:block;width:100%;color:var(--on-blue-muted);font-size:12px}
   <aside class="shared" aria-labelledby="sharedTitle">
     <div class="ico"><svg><use href="#i-scoop"/></svg></div>
     <div>
-      <h3 id="sharedTitle">Made in our gelato laboratory</h3>
-      <p>All Sottozero gelato is produced in our dedicated gelato laboratory. The laboratory uses shared equipment and our shops store and serve every flavour side by side, so traces of any allergen can be present in any product. Every flavour has its own dedicated scoop. Each flavour shows what it <b>contains</b> and what it <b>may contain</b>. If you have an allergy, tell a member of our team every time you order. <a href="#disclaimer">Read the full allergen notice</a>.</p>
+      <h3 id="sharedTitle">Made in a shared environment</h3>
+      <p>All Sottozero gelato is produced in our gelato laboratory using shared equipment, and every flavour is stored and served side by side. Traces of any allergen can be present in any product. Please tell our team about any allergy before you order. <a href="#disclaimer">Read the allergen notice</a>.</p>
       <div class="may-row" id="mayRow"></div>
     </div>
   </aside>
 
   <section id="disclaimer" class="legal" aria-labelledby="legalTitle">
-    <h2 id="legalTitle">Allergen &amp; ingredient notice</h2>
+    <h2 id="legalTitle">Allergen notice</h2>
     <div>
-      <p><b>Production.</b> All Sottozero gelato is produced in our dedicated gelato laboratory. The laboratory produces many flavours using shared equipment, and our shops store and serve every flavour side by side. Every flavour has its own dedicated scoop, and we follow strict hygiene and food safety procedures. Even so, traces of any allergen used in our laboratory or our shops may be present in any product. We cannot guarantee that any product is free from any allergen.</p>
-      <p><b>“Contains” and “may contain”.</b> “Contains” means the allergen is an ingredient in that flavour. “May contain” means it is not an ingredient, but traces may be present through shared equipment, production or storage. Every product may contain traces of gluten, eggs, milk, nuts, fish and crustaceans.</p>
-      <p><b>Where this information comes from.</b> This page is based on our recipes and on the ingredient information our suppliers give us. We rely on our suppliers for the accuracy of that information. Recipes, ingredients and suppliers can change without notice. This page is for guidance only and does not replace speaking to our staff.</p>
-      <p><b>Before you order.</b> If you have a food allergy or intolerance, tell a member of our team every time you order, even if you have ordered the same flavour before. This page is suitable for dietary choices and intolerances. If you have a severe allergy, we advise you not to eat our products, because they are all made in the same laboratory and served in the same shops and we cannot rule out cross contact. If you choose to eat them, you do so at your own risk. If you are in any doubt, please do not consume the product.</p>
-      <p><b>Your decision.</b> We publish this information so that you can make your own informed choice. We are not able to assess your allergy or judge on your behalf whether a product is suitable for you. Nothing on this page is medical advice. Please follow the guidance of your own doctor.</p>
-      <p><b>Limitation of liability.</b> To the fullest extent permitted by law, Sottozero is not liable for any loss, damage, illness or reaction arising from reliance on this page, from any error or omission in it, or from consuming a product after reading this notice. Nothing in this notice excludes or limits any liability that cannot be excluded or limited under Maltese or European Union law.</p>
-      <p><b>Tell us.</b> If anything on this page looks wrong, please tell our team or write to <a href="mailto:info@sottozerofactory.com" style="color:inherit;font-weight:700">info@sottozerofactory.com</a>.</p>
-      <p>This notice is governed by the laws of Malta.</p>
+      <p><b>Shared production.</b> All Sottozero gelato is produced in our gelato laboratory using shared equipment, and every flavour is stored and served side by side in our shops. Each flavour has its own scoop and we follow strict hygiene procedures, but traces of any allergen may be present in any product. We cannot guarantee that any product is free from any allergen.</p>
+      <p><b>Contains and may contain.</b> “Contains” means the allergen is an ingredient. “May contain” means it is not an ingredient, but traces may be present. Every product may contain traces of gluten, eggs, milk, nuts, fish and crustaceans.</p>
+      <p><b>The choice is yours.</b> This page is for guidance only. It is based on our recipes and our suppliers’ ingredient information, which can change without notice. We cannot assess your allergy or decide for you whether a product is suitable. Always tell our team about any allergy before you order. If you have a severe allergy, we advise you not to eat our products; if you choose to, you do so at your own risk. If in doubt, do not consume.</p>
+      <p><b>Liability.</b> To the fullest extent permitted by law, Sottozero is not liable for any loss, illness or reaction arising from reliance on this page or from consuming our products. Nothing in this notice limits any liability that cannot be limited by law. This page is not medical advice and is governed by the laws of Malta.</p>
     </div>
   </section>
 </main>
@@ -613,7 +609,7 @@ function openSheet(f){
     <div class="matrix">${rows}</div>
     ${free.length?`<div class="sh-sec"><h4>Does not contain</h4><p class="ing">${free.join(", ")}.</p></div>`:""}
     <div class="sh-sec"><h4>Full ingredients</h4><p class="ing">${highlight(f.i,f.a)}</p></div>
-    <p class="sh-note">Based on our recipes and our suppliers’ ingredient information. Made in our gelato laboratory, where traces of other allergens can be present. Tell a member of our team about your allergy before you order, and read the <a href="#disclaimer" style="color:inherit;font-weight:700" data-close>full allergen notice</a>.</p>`;
+    <p class="sh-note">Based on our recipes and our suppliers’ ingredient information. Made in our gelato laboratory, where traces of other allergens can be present. Tell a member of our team about your allergy before you order, and read the <a href="#disclaimer" style="color:inherit;font-weight:700" data-close>allergen notice</a>.</p>`;
   sheet.hidden = false; scrim.hidden = false; document.body.classList.add("locked");
   sheet.querySelector(".x").onclick = closeSheet;
   sheet.querySelector("[data-close]").onclick = closeSheet;
