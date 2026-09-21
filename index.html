@@ -76,8 +76,7 @@ button{font:inherit;color:inherit;cursor:pointer}
 .hero-bar{position:relative;z-index:4;display:flex;align-items:center;justify-content:space-between;gap:16px;padding-block:22px 0}
 .hero-bar svg{height:20px;width:151px;color:#fff;display:block}
 .hero-bar .tag{font:600 10.5px var(--f-display);letter-spacing:2.6px;text-transform:uppercase;color:rgba(255,255,255,.72);text-align:right}
-.backword{position:absolute;z-index:1;left:62%;top:30%;transform:translate(-50%,-50%);font:italic 500 clamp(170px,34vw,480px)/.8 var(--f-voice);letter-spacing:-.03em;color:rgba(255,255,255,.065);white-space:nowrap;pointer-events:none;user-select:none}
-.backword span{display:inline-block}
+.backword{position:absolute;z-index:1;left:60%;top:44%;transform:translate(-50%,-50%);padding:.12em .25em .3em;font:italic 500 clamp(150px,30vw,420px)/1 var(--f-voice);letter-spacing:-.03em;color:rgba(255,255,255,.065);white-space:nowrap;pointer-events:none;user-select:none}
 .cone-wrap{position:absolute;z-index:2;top:0;right:max(-40px,calc(50% - 600px));height:104%;aspect-ratio:1024/1536;pointer-events:none}
 .cone-img{position:absolute;left:0;top:-4.6%;width:100%;height:auto;display:block;transform-origin:62% 30%;will-change:transform}
 .hero-stage{position:relative;z-index:3;min-height:clamp(600px,86svh,860px);display:flex;align-items:flex-end}
@@ -110,7 +109,7 @@ button{font:inherit;color:inherit;cursor:pointer}
   .cone-wrap{height:auto;width:min(96vw,560px);right:-6vw;top:0}
   .hero-stage{min-height:0;display:block;padding-top:min(118vw,700px)}
   .hero-copy{padding-block:0 44px}
-  .backword{top:27%;left:56%;font-size:46vw}
+  .backword{top:26%;left:52%;font-size:42vw}
   .hero::before{background:radial-gradient(70% 45% at 70% 26%,rgba(120,170,255,.4),transparent 70%)}
   .hero h1{font-size:clamp(46px,13.5vw,80px)}
   .kicker{margin-bottom:14px}
@@ -210,8 +209,8 @@ h2 em{font-style:italic;font-weight:600;color:var(--orange)}
 
 /* SHARED KITCHEN */
 .shared{margin-top:56px;display:grid;grid-template-columns:auto 1fr;gap:18px;align-items:start;background:var(--warn-soft);border-radius:var(--r-lg);padding:22px}
-.shared .ico{width:44px;height:44px;border-radius:12px;background:var(--warn);color:#fff;display:grid;place-items:center}
-.shared .ico svg{width:24px;height:24px}
+.shared .ico{width:44px;height:44px;border-radius:12px;background:#0A4FD1;color:#fff;display:grid;place-items:center}
+.shared .ico svg{width:13px;height:30px}
 .shared h3{margin:0 0 6px;font:800 18px var(--f-display);color:var(--ink)}
 .shared p{margin:0;font-size:14px;color:var(--ink-2);max-width:68ch}
 .shared a{color:var(--warn);font-weight:700}
@@ -302,6 +301,7 @@ footer small{display:block;width:100%;color:var(--on-blue-muted);font-size:12px}
     <symbol id="s-fb" viewBox="0 0 24 24" fill="currentColor"><path d="M13.5 21v-7.5h2.5l.4-3h-2.9V8.6c0-.9.3-1.5 1.5-1.5h1.5V4.4c-.3 0-1.2-.1-2.2-.1-2.2 0-3.7 1.3-3.7 3.8v2.4H8v3h2.6V21h2.9z"/></symbol>
     <symbol id="s-tt" viewBox="0 0 24 24" fill="currentColor"><path d="M16.6 3c.3 2.2 1.6 3.6 3.9 3.8v2.7c-1.4.1-2.6-.3-3.9-1.1v5.4c0 6.8-7.4 8.9-10.4 4.1-1.9-3.1-.7-8.6 5.5-8.8v2.9c-.5.1-1 .2-1.4.3-1.4.5-2.2 1.3-2 2.8.4 2.9 5.7 3.8 5.3-1.9V3h3z"/></symbol>
     <symbol id="s-web" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3a14 14 0 0 1 0 18M12 3a14 14 0 0 0 0 18"/></symbol>
+    <symbol id="sz-mark" viewBox="255 -4 104 252" fill="currentColor"><path d="M355.19,119.62v-.05c-.84-3.82-3.33-7.24-6.86-9.4-3.57-2.18-7.83-2.84-11.68-1.81-2.07.58-4.02,1.37-5.9,2.14-1.77.72-3.42,1.4-5.17,1.91l-.11.03c-9.37,3.19-19.02,3.97-27.87,2.25-4.97-.92-10.16-2.41-15.44-4.43-2.33-.89-4.84-1.7-7.47-1.7-.25,0-.5,0-.75.02-3.98.1-7.84,1.92-10.62,5.01-1.73,1.93-2.98,4.29-3.55,6.82-.82,3.62.21,7.33.9,10.89.72,3.73,1.52,7.44,2.37,11.14,1.71,7.41,3.67,14.75,5.79,22.05,2.11,7.25,4.37,14.45,6.73,21.61,2.03,6.16,4.12,12.29,6.23,18.42,3.6,10.1,7.21,19.3,11.01,28.12,1,2.25,2.24,4.85,4.2,7.02,2.42,2.83,5.83,4.5,9.62,4.71,3.78.19,7.64-1.15,10.34-3.68,2.45-2.16,3.87-5.01,4.94-7.52,2.52-5.86,4.92-11.83,7.13-17.73,10.77-28.9,19.35-57.61,25.5-85.31.63-2.86,1.48-6.76.62-10.54ZM339.27,125.19h0c-3.83,17.71-8.79,35.93-14.98,55.2-.66,2.06-1.33,4.12-2.02,6.2-.68,2.08-1.38,4.17-2.1,6.27-1.17,3.42-2.37,6.88-3.62,10.38-2.34,6.49-4.51,12.21-6.65,17.5-.28.68-.55,1.34-.81,1.98-.37.92-.73,1.79-1.1,2.66l-.46,1.06-.45-1.06c-11.99-28.44-22.02-59.6-29.81-92.6l-.33-1.45c-.4-1.74-.85-3.71-1.21-5.55l-.17-.87.83.31c21.79,8.13,39.39,8.34,58.84.7.74-.27,1.53-.61,2.3-.94.36-.15.73-.31,1.09-.46l.79-.33-.14,1.01Z"/><path d="M269.48,91.61c5.9,5.57,13.93,9.65,23.85,12.11,10.75,2.67,21.33,2.83,30.57.47,10.4-2.66,19.53-8.76,25.05-16.74,6.03-8.72,7.77-19.91,4.55-29.2-3.78-10.88-14.19-19.57-27.85-23.25-3.11-.84-6.37-1.43-9.52-2.01-6.08-1.11-12.36-2.26-17.91-5.2-2.03-1.08-3.52-2.9-3.99-4.88-.4-1.69-.05-3.36,1.01-4.84,3.1-4.33,9.88-3.83,15.2-1.9,2.38.86,4.68,2.14,6.91,3.38,3.73,2.07,7.59,4.22,11.89,4.39.1,0,.21,0,.32,0,3.77,0,6.67-2.79,6.95-6.75.39-5.59-4.53-9.19-7.5-10.83-1.07-.6-2.28-1.17-3.79-1.81-9.3-3.93-12.87-4.55-20.66-4.55-14.69,0-22.08,7.27-25.51,14.66-2.16,4.65-2.35,10.35-.51,15.25,1.81,4.81,5.94,9.04,12.29,12.57,5.97,3.32,12.79,4.61,19.39,5.86l.88.17c1.49.29,2.98.57,4.46.89,3.83.83,6.85,1.72,9.52,2.8,3.88,1.58,7.01,3.61,9.31,6.04,2.79,2.95,4.4,6.54,4.54,10.11.15,3.81-1.43,7.85-4.33,11.09-2.42,2.7-5.66,4.88-9.91,6.67-13.13,5.52-29.14,3.86-40.78-4.22-3.13-2.17-7.05-5.68-7.96-10.06-.84-4.06.28-8.65,2.94-11.99.91-1.56,2.04-2.82,3.04-3.93,1.01-1.12,1.88-2.09,2.42-3.22,1.17-2.46,1.21-5.32.1-7.27-.95-1.67-2.65-2.63-5.04-2.85-.3-.02-.6-.03-.9-.03-1.26,0-2.49.2-3.51.58-6.84,2.53-11.24,10.24-13.26,14.61-1.52,3.28-2.38,6.64-2.57,9.99-.47,8.38,3.4,17.3,10.37,23.88Z"/></symbol>
     <symbol id="logo" viewBox="0 0 627.17 83.28" fill="currentColor"><path d="M31.67,41.35c-9.64-2.9-11.42-4.02-11.42-6.55,0-2.72,2.53-4.02,7.39-4.02s10.11,1.5,14.69,4.12c1.41.75,2.43.56,3.18-.84l5.24-9.36c.75-1.22.47-2.43-.75-3.18-6.18-3.84-13.29-5.99-22-5.99-15.63,0-25.83,8.14-25.83,20.69,0,9.92,5.52,15.35,19.75,19.56,9.27,2.71,11.7,4.02,11.7,7.39,0,2.9-2.34,4.58-6.65,4.58-7.21,0-12.07-1.68-17.41-5.43-1.31-.93-2.43-.66-3.18.66L.41,72.89c-.75,1.22-.47,2.43.75,3.28,6.74,4.31,14.97,6.83,24.61,6.83,16.29,0,25.64-7.86,25.64-21.43,0-10.01-5.9-16.1-19.75-20.21h.01Z"/><path d="M94.28,14.87c-20.4,0-35.47,14.79-35.47,34.16s15.07,34.25,35.47,34.25,35.1-14.6,35.1-34.25-14.88-34.16-35.1-34.16ZM94.28,67.09c-9.92,0-17.22-7.77-17.22-18.06s7.3-17.97,17.22-17.97,16.85,7.39,16.85,17.97-7.11,18.06-16.85,18.06Z"/><path d="M190.12,16.36h-55.59c-1.5,0-2.34.84-2.34,2.34v11.05c0,1.5.84,2.34,2.34,2.34h18.72v47.73c0,1.5.84,2.34,2.34,2.34h13.2c1.5,0,2.34-.84,2.34-2.34v-47.73h19c1.5,0,2.34-.84,2.34-2.34v-11.05c0-1.5-.84-2.34-2.34-2.34h0Z"/><path d="M239.39,79.82v-47.73h19c1.5,0,2.34-.84,2.34-2.34v-11.05c0-1.5-.84-2.34-2.34-2.34h-55.59c-1.5,0-2.34.84-2.34,2.34v11.05c0,1.5.84,2.34,2.34,2.34h18.72v47.73c0,1.5.84,2.34,2.34,2.34h13.2c1.5,0,2.34-.84,2.34-2.34h-.01Z"/><path d="M298.82,14.87c-20.4,0-35.47,14.79-35.47,34.16s15.07,34.25,35.47,34.25,35.1-14.6,35.1-34.25-14.88-34.16-35.1-34.16ZM298.82,67.09c-9.92,0-17.22-7.77-17.22-18.06s7.3-17.97,17.22-17.97,16.85,7.39,16.85,17.97-7.11,18.06-16.85,18.06Z"/><path d="M392.79,66.81h-30.33l30.61-38c.75-.84,1.03-1.78,1.03-2.9v-7.21c0-1.5-.84-2.34-2.34-2.34h-49.51c-1.5,0-2.34.84-2.34,2.34v10.67c0,1.5.84,2.34,2.34,2.34h28.26l-29.58,37.91c-.66.94-1.03,1.78-1.03,2.9v7.3c0,1.5.84,2.34,2.34,2.34h50.54c1.5,0,2.34-.84,2.34-2.34v-10.67c0-1.5-.84-2.34-2.34-2.34h0Z"/><path d="M408.04,82.16h43.05c1.5,0,2.34-.84,2.34-2.34v-10.76c0-1.5-.84-2.34-2.34-2.34h-27.7v-10.2h23.86c1.5,0,2.34-.84,2.34-2.34v-10.58c0-1.5-.84-2.34-2.34-2.34h-23.86v-9.36h27.52c1.5,0,2.34-.84,2.34-2.34v-10.86c0-1.5-.84-2.34-2.34-2.34h-42.86c-1.5,0-2.34.84-2.34,2.34v61.11c0,1.5.84,2.34,2.34,2.34h0Z"/><path d="M507.25,61.75c7.77-4.02,12.45-11.32,12.45-20.5,0-14.22-10.01-24.89-26.95-24.89h-25.27c-1.5,0-2.34.84-2.34,2.34v61.11c0,1.5.84,2.34,2.34,2.34h12.82c1.5,0,2.34-.84,2.34-2.34v-14.51h7.58l9.83,15.35c.66,1.03,1.68,1.5,2.9,1.5h15.07c1.87,0,2.62-1.22,1.5-2.81l-12.26-17.6h0ZM491.34,50.43h-8.71v-19.19h8.42c6.93,0,10.76,4.31,10.76,9.82s-4.02,9.36-10.48,9.36h0Z"/><path d="M562.65,14.87c-20.4,0-35.47,14.79-35.47,34.16s15.07,34.25,35.47,34.25,35.1-14.6,35.1-34.25-14.88-34.16-35.1-34.16ZM562.65,67.09c-9.92,0-17.22-7.77-17.22-18.06s7.3-17.97,17.22-17.97,16.85,7.39,16.85,17.97-7.11,18.06-16.85,18.06Z"/><path d="M607.29,6.97h5.39c3.21,0,5.85,1.12,5.85,4.72s-2.64,4.98-5.85,4.98h-1.95v5.46h-3.44V6.97ZM612.4,13.96c1.81,0,2.77-.77,2.77-2.26s-.97-2-2.77-2h-1.67v4.26h1.67ZM614.43,13.58l4.84,8.56h-3.84l-3.38-6.36s2.38-2.2,2.38-2.2Z"/><path d="M612.48,29.39c-8.1,0-14.7-6.59-14.7-14.7S604.37-.01,612.48-.01s14.7,6.59,14.7,14.7-6.59,14.7-14.7,14.7M612.48,2.65c-6.65,0-12.05,5.4-12.05,12.05s5.41,12.05,12.05,12.05,12.05-5.41,12.05-12.05-5.4-12.05-12.05-12.05"/></symbol>
   </defs>
 </svg>
@@ -319,7 +319,7 @@ footer small{display:block;width:100%;color:var(--on-blue-muted);font-size:12px}
     <svg role="img" aria-label="Sottozero"><use href="#logo"/></svg>
     <span class="tag">The Gelato Factory</span>
   </div>
-  <div class="backword" id="backword" aria-hidden="true"><span>g</span><span>e</span><span>l</span><span>a</span><span>t</span><span>o</span></div>
+  <div class="backword" id="backword" aria-hidden="true">gelato</div>
   <div class="cone-wrap" aria-hidden="true"><img class="cone-img" id="coneImg" src="cone.webp" alt="" width="1024" height="1536" decoding="async" fetchpriority="high"></div>
   <div class="wrap hero-stage">
     <div class="hero-copy">
@@ -368,7 +368,7 @@ footer small{display:block;width:100%;color:var(--on-blue-muted);font-size:12px}
   </div>
 
   <aside class="shared" aria-labelledby="sharedTitle">
-    <div class="ico"><svg><use href="#i-scoop"/></svg></div>
+    <div class="ico"><svg viewBox="0 0 104 252" width="12" height="30" aria-hidden="true"><use href="#sz-mark" width="104" height="252"/></svg></div>
     <div>
       <h3 id="sharedTitle">Made in a shared environment</h3>
       <p>All Sottozero gelato is produced in our gelato laboratory using shared equipment, and every flavour is stored and served side by side. Traces of any allergen can be present in any product. Please tell our team about any allergy before you order. <a href="#disclaimer">Read the allergen notice</a>.</p>
@@ -377,7 +377,7 @@ footer small{display:block;width:100%;color:var(--on-blue-muted);font-size:12px}
   </aside>
 
   <section id="disclaimer" class="legal" aria-labelledby="legalTitle">
-    <h2 id="legalTitle">Allergen notice</h2>
+    <h2 id="legalTitle">Allergen &amp; ingredient notice</h2>
     <div>
       <p><b>Shared production.</b> All Sottozero gelato is produced in our gelato laboratory using shared equipment, and every flavour is stored and served side by side in our shops. Each flavour has its own scoop and we follow strict hygiene procedures, but traces of any allergen may be present in any product. We cannot guarantee that any product is free from any allergen.</p>
       <p><b>Contains and may contain.</b> “Contains” means the allergen is an ingredient. “May contain” means it is not an ingredient, but traces may be present. Every product may contain traces of gluten, eggs, milk, nuts, fish and crustaceans.</p>
@@ -643,7 +643,7 @@ function heroIntro(){
   const cone = document.getElementById("coneImg");
   const go = ()=>{
     const tl = gsap.timeline({defaults:{ease:"expo.out"}});
-    tl.from("#backword span",{yPercent:60,opacity:0,duration:1.6,stagger:.06})
+    tl.from("#backword",{y:60,opacity:0,duration:1.8})
       .from(cone,{yPercent:14,xPercent:6,rotate:7,opacity:0,duration:1.7},0.1)
       .from("#headline .ln>span",{yPercent:110,duration:1.2,stagger:.12},0.35)
       .from(".kicker",{opacity:0,x:-12,duration:1},0.3)
@@ -655,7 +655,7 @@ function heroIntro(){
 
   /* depth on scroll: cone lifts faster than the backdrop word */
   gsap.to(".cone-wrap",{yPercent:-10,ease:"none",scrollTrigger:{trigger:"#hero",start:"top top",end:"bottom top",scrub:true}});
-  gsap.to("#backword",{yPercent:-30,ease:"none",scrollTrigger:{trigger:"#hero",start:"top top",end:"bottom top",scrub:true}});
+  gsap.to("#backword",{y:-80,ease:"none",scrollTrigger:{trigger:"#hero",start:"top top",end:"bottom top",scrub:true}});
   gsap.to(".hero-copy",{yPercent:-12,opacity:.2,ease:"none",scrollTrigger:{trigger:"#hero",start:"top top",end:"bottom top",scrub:true}});
 
   /* pointer: the cone leans gently toward the cursor */
