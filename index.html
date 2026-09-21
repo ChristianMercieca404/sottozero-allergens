@@ -123,6 +123,9 @@ h2{font:italic 500 clamp(30px,4.6vw,44px)/1.08 var(--f-voice);letter-spacing:-.0
 h2 em{font-style:italic;font-weight:600;color:var(--orange)}
 .sub{color:var(--muted);max-width:56ch;margin:10px 0 0}
 
+.risk{margin:16px 0 0;max-width:68ch;padding:13px 15px;border-radius:12px;background:var(--warn-soft);color:var(--ink-2);font-size:14px;line-height:1.55}
+.risk b{color:var(--warn)}
+.risk a{color:var(--warn);font-weight:700;white-space:nowrap}
 /* ALLERGEN PICKER */
 .picker{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-top:26px}
 .al{position:relative;display:flex;flex-direction:column;align-items:flex-start;gap:14px;padding:16px 14px 14px;min-height:108px;background:var(--surface);border:1.5px solid var(--line);border-radius:var(--r-lg);text-align:left;transition:border-color .2s,background-color .2s}
@@ -322,10 +325,9 @@ footer small{display:block;width:100%;color:var(--on-blue-muted);font-size:12px}
     <div class="hero-copy">
       <p class="kicker">Allergens &amp; ingredients</p>
       <h1 id="headline"><span class="ln"><span>Know every</span></span><span class="ln"><span><em>scoop.</em></span></span></h1>
-      <p class="lede">Tell us what you avoid. We will show you which of today’s flavours are clear of it, down to the last ingredient.</p>
+      <p class="lede">Tell us what you avoid and we will show you which flavours are clear of it, down to the last ingredient.</p>
       <div class="hero-cta">
         <a class="jump" href="#avoid">Find my flavours <svg><use href="#i-down"/></svg></a>
-        <small><b>14</b>EU allergens checked on every flavour</small>
       </div>
     </div>
   </div>
@@ -337,6 +339,7 @@ footer small{display:block;width:100%;color:var(--on-blue-muted);font-size:12px}
     <p class="eyebrow">Step one</p>
     <h2 id="avoidTitle">What do you <em>avoid?</em></h2>
     <p class="sub">Tap everything that applies. Flavours that declare any of them step aside, and the ones left standing are clear of what you picked.</p>
+    <p class="risk"><b>Dietary choices and intolerances:</b> this guide is made for you. <b>Severe allergies:</b> all our gelato is made in the same laboratory and served in the same shops, so we cannot promise any flavour is free of traces. If you choose to eat it, you do so at your own risk. Please speak to our team first. <a href="#disclaimer">Full allergen notice</a></p>
     <div class="picker" id="picker" role="group" aria-label="Allergens you avoid"></div>
     <div class="picker-foot">
       <p>All 14 EU allergens are listed inside each flavour.</p>
@@ -379,7 +382,7 @@ footer small{display:block;width:100%;color:var(--on-blue-muted);font-size:12px}
       <p><b>Where our gelato is made.</b> Our gelato is made in our own gelato laboratory, not in a kitchen. The laboratory produces many flavours using shared equipment, and our shops store and serve every flavour side by side. Every flavour has its own dedicated scoop, and we follow strict hygiene and food safety procedures. Even so, traces of any allergen used in our laboratory or our shops may be present in any product. We cannot guarantee that any product is free from any allergen.</p>
       <p><b>“Contains” and “may contain”.</b> “Contains” means the allergen is an ingredient in that flavour. “May contain” means it is not an ingredient, but traces may be present through shared equipment, production or storage. Every product may contain traces of gluten, eggs, milk, nuts, fish and crustaceans.</p>
       <p><b>Where this information comes from.</b> This page is based on our recipes and on the ingredient information our suppliers give us, and was last updated on <b class="js-updated">16 July 2026</b>. We rely on our suppliers for the accuracy of that information. Recipes, ingredients and suppliers can change, so please check the date above. This page is for guidance only and does not replace speaking to our staff.</p>
-      <p><b>Before you order.</b> If you have a food allergy or intolerance, tell a member of our team every time you order, even if you have ordered the same flavour before. If you have a severe allergy, we advise you not to eat our products, because we cannot rule out cross contact. If you are in any doubt, please do not consume the product.</p>
+      <p><b>Before you order.</b> If you have a food allergy or intolerance, tell a member of our team every time you order, even if you have ordered the same flavour before. This page is suitable for dietary choices and intolerances. If you have a severe allergy, we advise you not to eat our products, because they are all made in the same laboratory and served in the same shops and we cannot rule out cross contact. If you choose to eat them, you do so at your own risk. If you are in any doubt, please do not consume the product.</p>
       <p><b>Your decision.</b> We publish this information so that you can make your own informed choice. We are not able to assess your allergy or judge on your behalf whether a product is suitable for you. Nothing on this page is medical advice. Please follow the guidance of your own doctor.</p>
       <p><b>Limitation of liability.</b> To the fullest extent permitted by law, Sottozero The Gelato Factory and La Valletta Manufacturing Ltd are not liable for any loss, damage, illness or reaction arising from reliance on this page, from any error or omission in it, or from consuming a product after reading this notice. Nothing in this notice excludes or limits any liability that cannot be excluded or limited under Maltese or European Union law.</p>
       <p><b>Tell us.</b> If anything on this page looks wrong, please tell our team or write to <a href="mailto:info@sottozerofactory.com" style="color:inherit;font-weight:700">info@sottozerofactory.com</a>.</p>
