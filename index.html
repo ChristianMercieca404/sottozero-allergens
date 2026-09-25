@@ -12,6 +12,7 @@
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Manrope:wght@600;700;800&family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500;1,600&display=swap">
 <style>
 :root{
+  color-scheme:light;
   --ground:#FFFFFF;
   --surface:#FFFFFF;
   --mist:#F3F6FC;
@@ -36,30 +37,6 @@
   --f-display:"Manrope","Inter",system-ui,sans-serif;
   --f-body:"Inter",system-ui,-apple-system,"Segoe UI",sans-serif;
   --f-voice:"Cormorant Garamond",Georgia,"Times New Roman",serif;
-}
-@media (prefers-color-scheme:dark){
-  :root:not([data-theme="light"]){
-    --ground:#070C1B;--surface:#0F1730;--mist:#131D3A;--line:#223056;
-    --ink:#EEF2FB;--ink-2:#CBD3E6;--muted:#97A1BD;--muted-2:#6F7996;
-    --blue:#2F6BF0;--blue-deep:#0B2E86;--blue-soft:#15244D;
-    --cream:#FFD7C2;
-    --good:#3DC48F;--good-soft:rgba(61,196,143,.14);
-    --bad:#FF6B63;--bad-soft:rgba(255,107,99,.13);
-    --warn:#F0B14A;--warn-soft:rgba(240,177,74,.13);
-    --scrim:rgba(0,0,0,.6);
-    --shadow:0 1px 2px rgba(0,0,0,.3),0 12px 32px rgba(0,0,0,.3);
-  }
-}
-:root[data-theme="dark"]{
-  --ground:#070C1B;--surface:#0F1730;--mist:#131D3A;--line:#223056;
-  --ink:#EEF2FB;--ink-2:#CBD3E6;--muted:#97A1BD;--muted-2:#6F7996;
-  --blue:#2F6BF0;--blue-deep:#0B2E86;--blue-soft:#15244D;
-  --cream:#FFD7C2;
-  --good:#3DC48F;--good-soft:rgba(61,196,143,.14);
-  --bad:#FF6B63;--bad-soft:rgba(255,107,99,.13);
-  --warn:#F0B14A;--warn-soft:rgba(240,177,74,.13);
-  --scrim:rgba(0,0,0,.6);
-  --shadow:0 1px 2px rgba(0,0,0,.3),0 12px 32px rgba(0,0,0,.3);
 }
 *{box-sizing:border-box}
 [hidden]{display:none!important}
